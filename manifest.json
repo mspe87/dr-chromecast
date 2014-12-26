@@ -1,0 +1,14 @@
+{
+  "name" : "DR Chromecast",
+  "version" : "1.0",
+  "description" : "Simple cast for DR",
+  "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+  "icons": { "16": "DR_large.png", "48": "DR_large.png", "128": "DR_large.png" },
+  "browser_action": {
+    "default_icon": "DR_large.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 2
+}

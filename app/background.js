@@ -2,14 +2,32 @@
 $( document ).ready(function() {
   var player = $("#player");
   if (player){
-    var href = $('<a>'); 
-    var url = "http://tbertelsen.dk/castdr/?url=";
-    var encodedDrURL = encodeURIComponent($(location).attr('href'));
-    href.attr('href', url + encodedDrURL);
-    href.attr('target', '_blank');
-    href.append(getCastImg());
-    player.append(href);
+    console.log(player);
+    btnHolder = $(".player-button-holder");
+    console.log(btnHolder);
+    btnHolder.append('<div class="play-icon" id="test123"><span class="sr-only">Afspil</span></div>');
+    $("#test123").append(getCastImg());
+    
+
+    $("#castimg").click(function(){
+      clickChromeCast();
+    });
   }
+
+
+function clickChromeCast(){
+    $(".content-overlay").empty();
+    var iframe= $('<iframe>');
+    iframe.attr('name', 'castIframe');
+    iframe.attr('style', 'width: 100%; min-height: 500px;');
+
+    var url = "http://salty-dawn-8826.herokuapp.com/?url=";
+    var encodedDrURL = encodeURIComponent($(location).attr('href'));
+    iframe.attr('src', url + encodedDrURL);
+
+    $(".content-overlay").append(iframe);
+}
+
   
 
   function getCastImg(){
@@ -21,8 +39,6 @@ $( document ).ready(function() {
   }
 
 });
-
-
 
 
 

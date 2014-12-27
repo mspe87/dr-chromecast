@@ -1,15 +1,28 @@
-function createTab() {
-  chrome.windows.getAll({"populate":true}, function(windows) {
-    chrome.tabs.getSelected(null,function(tab) {
-      var url = "http://tbertelsen.dk/castdr/?url=";
-      var drUrl = tab.url;    
-      var tablink = encodeURIComponent(drUrl);
-      chrome.tabs.create({"url":url +tablink, "selected":true});
-    });
 
-  });
-}
+$( document ).ready(function() {
+  var player = $("#player");
+  if (player){
+    var href = $('<a>'); 
+    var url = "http://tbertelsen.dk/castdr/?url=";
+    var encodedDrURL = encodeURIComponent($(location).attr('href'));
+    href.attr('href', url + encodedDrURL);
+    href.attr('target', '_blank');
+    href.append(getCastImg());
+    player.append(href);
+  }
+  
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  createTab();
+  function getCastImg(){
+    var img = $('<img>'); 
+    img.attr('id', 'castimg');
+    img.attr('src', chrome.extension.getURL("images/cast.png"));
+    img.attr('height', 40);
+    return img;
+  }
+
 });
+
+
+
+
+

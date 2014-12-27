@@ -20,7 +20,7 @@ function clickChromeCast(){
     var iframe= $('<iframe>');
     iframe.attr('name', 'castIframe');
     iframe.attr('style', 'width: 100%; min-height: 500px;');
-
+    iframe.attr('frameBorder', 0);
     var url = "http://dr-chromecast.herokuapp.com/?url=";
     var encodedDrURL = encodeURIComponent($(location).attr('href'));
     iframe.attr('src', url + encodedDrURL);

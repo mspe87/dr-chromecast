@@ -21,7 +21,7 @@ function clickChromeCast(){
     iframe.attr('name', 'castIframe');
     iframe.attr('style', 'width: 100%; min-height: 500px;');
 
-    var url = "http://salty-dawn-8826.herokuapp.com/?url=";
+    var url = "http://dr-chromecast.herokuapp.com/?url=";
     var encodedDrURL = encodeURIComponent($(location).attr('href'));
     iframe.attr('src', url + encodedDrURL);
 
